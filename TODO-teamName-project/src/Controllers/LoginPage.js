@@ -15,10 +15,14 @@ export default class LoginPage extends Component {
     }
     onSubmit(event){
         event.preventDefault();
-        loginUser(this.state.username,this.state.password).then(loginSuccess.bind(this)).catch((error)=>console.log(error));
+        loginUser(this.state.username,this.state.password).then(loginSuccess.bind(this)).catch((error)=>{
+            let resp = JSON.parse(error.responseText);
+            Warden.showInfoOrError('error',resp.description)
+        });
         function loginSuccess(userData) {
             this.saveInSession(userData);
             Warden.sessionUpdate();
+            Warden.showInfoOrError('info','Successfully logged in.');
             this.context.router.push('/adverts')
         }
     }

@@ -15,10 +15,14 @@ export default class RegisterPage extends Component {
     }
     onSubmit(event){
         event.preventDefault();
-        registerUser(this.state.username,this.state.password).then(registerSuccess.bind(this)).catch((error)=>console.log(error));
+        registerUser(this.state.username,this.state.password).then(registerSuccess.bind(this)).catch((error)=>{
+            let resp = JSON.parse(error.responseText);
+            Warden.showInfoOrError('error',resp.description)
+        });
         function registerSuccess(userData) {
             this.saveInSession(userData);
             Warden.sessionUpdate();
+            Warden.showInfoOrError('info','Registration was successful.');
             this.context.router.push('/')
         }
     }
