@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegisterView from '../Views/RegisterView';
 import {registerUser} from '../Models/KinveyRequester';
+import Warden from '../Controllers/Warden'
 
 export default class RegisterPage extends Component {
     constructor(props){
@@ -17,6 +18,7 @@ export default class RegisterPage extends Component {
         registerUser(this.state.username,this.state.password).then(registerSuccess.bind(this)).catch((error)=>console.log(error));
         function registerSuccess(userData) {
             this.saveInSession(userData);
+            Warden.sessionUpdate();
             this.context.router.push('/')
         }
     }
