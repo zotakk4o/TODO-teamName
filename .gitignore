@@ -48,3 +48,5 @@ Temporary Items
 *.xml
 TODO-teamName-project/.idea/TODO-teamName-project.iml
 *.xml
+*.xml
+*.iml
