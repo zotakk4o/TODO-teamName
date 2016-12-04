@@ -6,6 +6,8 @@ import Warden from './Controllers/Warden'
 import {logoutUser} from './Models/KinveyRequester'
 import InfoBoxView from './Views/InfoBoxView'
 import ErrorBoxView from './Views/ErrorBoxView'
+// import Footer from './Views/Footer'
+
 
 export default class App extends Component {
   constructor(props){
@@ -111,6 +113,7 @@ export default class App extends Component {
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                         <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
                         <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
+                        <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
                 </div>
@@ -124,6 +127,7 @@ export default class App extends Component {
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                         <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
                         <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
+                        <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
                 </div>
@@ -136,6 +140,7 @@ export default class App extends Component {
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                         <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
                         <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
+                        <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
                 </div>
@@ -150,6 +155,7 @@ export default class App extends Component {
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
+                        <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
                 </div>
@@ -162,6 +168,7 @@ export default class App extends Component {
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
+                        <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
                 </div>
@@ -173,6 +180,8 @@ export default class App extends Component {
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
+                        <Link to="/about" className="btn btn-default">About</Link>
+
                     </Header>
                     {this.props.children}
                 </div>

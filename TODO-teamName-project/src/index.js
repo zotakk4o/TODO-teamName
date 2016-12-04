@@ -9,9 +9,10 @@ import LoginPage from './Controllers/LoginPage';
 import RegisterPage from './Controllers/RegisterPage';
 import HomePage from './Controllers/HomePage';
 import CreateAdvertPage from './Controllers/CreateAdvertPage';
-import DeleteAdPage from './Controllers/DeleteAdPage'
-import EditAdPage from './Controllers/EditAdPage'
-import DetailsPage from './Controllers/DetailsPage'
+import DeleteAdPage from './Controllers/DeleteAdPage';
+import EditAdPage from './Controllers/EditAdPage';
+import DetailsPage from './Controllers/DetailsPage';
+import AboutPage from './Controllers/AboutPage';
 
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route path="adverts" component={AdvertsPage}/>
           <Route path="register" component={RegisterPage}/>
           <Route path="login" component={LoginPage}/>
+          <Route path="about" component={AboutPage}/>
           <Route path="create-advert" component={CreateAdvertPage}/>
           <Route path="edit/:adId" component={EditAdPage}/>
           <Route path="delete/:adId" component={DeleteAdPage}/>
