@@ -46,8 +46,8 @@ export default class App extends Component {
       }
   }
   disappearInfo() {
-      let first = setInterval(disapp.bind(this),2000);
-      let second = setInterval(appear.bind(this),1550);
+      let first = setInterval(disapp.bind(this),1500);
+      let second = setInterval(appear.bind(this),1520);
       function disapp(){
           this.setState({
               display:false,
@@ -95,8 +95,9 @@ export default class App extends Component {
         sessionStorage.clear();
         this.checkUserCredentials();
         this.context.router.push('/');
+        this.showInfoOrError('info','Successfully logged out.');
     }
-      this.showInfoOrError('info','Successfully logged out.');
+
   }
 
   render() {
@@ -147,7 +148,6 @@ export default class App extends Component {
                     <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappearInfo}/>
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
                     </Header>
@@ -160,7 +160,6 @@ export default class App extends Component {
                     <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappearError}/>
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
                     </Header>
@@ -172,7 +171,6 @@ export default class App extends Component {
                 <div className="container">
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
                     </Header>

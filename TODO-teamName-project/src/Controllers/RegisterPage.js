@@ -21,16 +21,16 @@ export default class RegisterPage extends Component {
         });
         function registerSuccess(userData) {
             this.saveInSession(userData);
+            this.context.router.push('/');
             Warden.sessionUpdate();
             Warden.showInfoOrError('info','Registration was successful.');
-            this.context.router.push('/')
         }
     }
 
     componentWillMount(){
         if(sessionStorage.getItem('username')){
             this.context.router.push('/');
-            Warden.showInfoOrError('error','Logout in order to create a new user.')
+            Warden.showInfoOrError('error','Logout in order to create a new user.');
         }
     }
 

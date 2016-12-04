@@ -29,7 +29,7 @@ export default class CreateAdvertPage extends Component {
     componentWillMount(){
         if(!sessionStorage.getItem('username')){
             this.context.router.push('/');
-            Warden.showInfoOrError('error','Login in order to create advertisment.')
+            Warden.showInfoOrError('error','Login in order to create an advertisment.')
         }
     }
 

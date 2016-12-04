@@ -55,4 +55,22 @@ function createAd(title,description){
         data:data
     })
 }
-export{registerUser,loginUser,logoutUser,createAd}
+function listAds(){
+    return $.ajax({
+        method:"GET",
+        url:baseUrl+'appdata/'+appKey+'/adverts',
+        headers:{
+            Authorization:'Kinvey ' + sessionStorage.getItem('authToken')
+        },
+    })
+}
+function readAd(adId){
+    return $.ajax({
+        method:"GET",
+        url:baseUrl+'appdata/'+appKey+'/adverts/'+ adId,
+        headers:{
+            Authorization:'Kinvey ' + sessionStorage.getItem('authToken')
+        },
+    })
+}
+export{registerUser,loginUser,logoutUser,createAd,listAds,readAd}
