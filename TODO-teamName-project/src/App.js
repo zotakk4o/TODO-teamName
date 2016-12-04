@@ -47,6 +47,7 @@ export default class App extends Component {
           });
       }
   }
+
   disappearInfo() {
       let first = setInterval(disapp.bind(this),1500);
       let second = setInterval(appear.bind(this),1520);
@@ -181,7 +182,6 @@ export default class App extends Component {
                         <Link to="/register" className="btn btn-default">Register</Link>
                         <Link to="/login" className="btn btn-default">Login</Link>
                         <Link to="/about" className="btn btn-default">About</Link>
-
                     </Header>
                     {this.props.children}
                 </div>
