@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 
 export default class HomeView extends Component {
     render() {
         return (
-            <h1>Home Page Welcome To</h1>
+            <div>
+                <h1>Welcome</h1>
+                <h2>Latest Ads:</h2>
+            </div>
         );
     }
 }

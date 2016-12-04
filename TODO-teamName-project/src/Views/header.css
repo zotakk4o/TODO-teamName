@@ -5,6 +5,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
 }
-#h1 {
-    color: #ff0400;
+.header {
+    text-align: center;
+    border: medium;
 }
