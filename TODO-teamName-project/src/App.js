@@ -6,7 +6,7 @@ import Warden from './Controllers/Warden'
 import {logoutUser} from './Models/KinveyRequester'
 import InfoBoxView from './Views/InfoBoxView'
 import ErrorBoxView from './Views/ErrorBoxView'
-// import Footer from './Views/Footer'
+import Footer from './Views/Footer'
 
 
 export default class App extends Component {
@@ -117,6 +117,7 @@ export default class App extends Component {
                         <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             );
         }else if(this.state.error){
@@ -131,6 +132,7 @@ export default class App extends Component {
                         <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             );
         }else{
@@ -144,6 +146,7 @@ export default class App extends Component {
                         <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             );
         }
@@ -159,6 +162,7 @@ export default class App extends Component {
                         <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             );
         }else if (this.state.error){
@@ -172,6 +176,7 @@ export default class App extends Component {
                         <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             );
         }else{
@@ -184,6 +189,7 @@ export default class App extends Component {
                         <Link to="/about" className="btn btn-default">About</Link>
                     </Header>
                     {this.props.children}
+                    <Footer/>
                 </div>
             );
         }
