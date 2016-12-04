@@ -8,6 +8,7 @@ import AdvertsPage from './Controllers/AdvertsPage';
 import LoginPage from './Controllers/LoginPage';
 import RegisterPage from './Controllers/RegisterPage';
 import HomePage from './Controllers/HomePage';
+import CreateAdvertPage from './Controllers/CreateAdvertPage';
 
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Route path="adverts" component={AdvertsPage}/>
           <Route path="register" component={RegisterPage}/>
           <Route path="login" component={LoginPage}/>
+          <Route path="create-advert" component={CreateAdvertPage}/>
       </Route>
   </Router>,
     document.getElementById('root')

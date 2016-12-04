@@ -13,6 +13,7 @@ export default class RegisterView extends Component {
                                className="form-control"
                                value={this.props.username}
                                onChange={this.props.onChange}
+                               required
                         />
                     </div>
 
@@ -23,6 +24,7 @@ export default class RegisterView extends Component {
                                className="form-control"
                                value={this.props.password}
                                onChange={this.props.onChange}
+                               required
                         />
                     </div>
 

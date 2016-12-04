@@ -1,42 +1,41 @@
 import React, { Component } from 'react';
 
-export default class LoginView extends Component {
+export default class CreateAdvertView extends Component {
     render() {
         return (
             <div>
-                <h1>Login</h1>
+                <h1>Create Advert</h1>
                 <form onSubmit={this.props.onSubmit}>
                     <div className="form-group">
-                        <label>Username </label>
+                        <label>Title </label>
                         <input type="text"
-                               name="username"
+                               name="title"
                                className="form-control"
-                               value={this.props.username}
+                               value={this.props.title}
                                onChange={this.props.onChange}
                                required
                         />
                     </div>
 
                     <div className="form-group">
-                        <label>Password </label>
-                        <input type="password"
-                               name="password"
-                               className="form-control"
-                               value={this.props.password}
-                               onChange={this.props.onChange}
-                               required
+                        <label>Description </label>
+                        <textarea
+                            name="description"
+                            className="form-control"
+                            value={this.props.description}
+                            onChange={this.props.onChange}
+                            rows="10"
                         />
                     </div>
 
                     <div className="form-group">
                         <input type="submit"
-                               value='Login'
+                               value='Create Advert'
                                className="btn btn-default"
                         />
                     </div>
                 </form>
             </div>
-
         );
     }
 }

@@ -26,6 +26,14 @@ export default class RegisterPage extends Component {
             this.context.router.push('/')
         }
     }
+
+    componentWillMount(){
+        if(sessionStorage.getItem('username')){
+            this.context.router.push('/');
+            Warden.showInfoOrError('error','Logout in order to create a new user.')
+        }
+    }
+
     saveInSession(userData){
         sessionStorage.setItem('authToken',userData._kmd.authtoken);
         sessionStorage.setItem('username',userData.username);

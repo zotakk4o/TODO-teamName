@@ -20,10 +20,11 @@ export default class App extends Component {
       this.showInfoOrError = this.showInfoOrError.bind(this);
       this.checkUserCredentials = this.checkUserCredentials.bind(this);
       this.onLogout = this.onLogout.bind(this);
-      this.disappear = this.disappear.bind(this);
+      this.disappearError = this.disappearError.bind(this);
+      this.disappearInfo = this.disappearInfo.bind(this);
   }
 
-  componentDidMount(){
+  componentWillMount(){
     Warden.sessionUpdate = this.checkUserCredentials;
     Warden.showInfoOrError = this.showInfoOrError;
     this.checkUserCredentials();
@@ -44,7 +45,9 @@ export default class App extends Component {
           });
       }
   }
-  disappear() {
+  disappearInfo() {
+      let first = setInterval(disapp.bind(this),2000);
+      let second = setInterval(appear.bind(this),1550);
       function disapp(){
           this.setState({
               display:false,
@@ -59,8 +62,16 @@ export default class App extends Component {
           clearInterval(first);
           clearInterval(second);
       }
-      let first = setInterval(disapp.bind(this),2000);
-      let second = setInterval(appear.bind(this),1550);
+  }
+  disappearError(){
+      this.setState({
+          display:false,
+      });
+      this.setState({
+          display:true,
+          info:false,
+          error:false
+      });
   }
 
   checkUserCredentials(){
@@ -93,7 +104,7 @@ export default class App extends Component {
         if(this.state.info){
             return (
                 <div className="container">
-                    <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappear}/>
+                    <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappearInfo}/>
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>
@@ -106,7 +117,7 @@ export default class App extends Component {
         }else if(this.state.error){
             return (
                 <div className="container">
-                    <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappear}/>
+                    <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappearError}/>
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>
@@ -133,7 +144,7 @@ export default class App extends Component {
         if(this.state.info){
             return (
                 <div className="container">
-                    <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappear}/>
+                    <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappearInfo}/>
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>
@@ -146,7 +157,7 @@ export default class App extends Component {
         }else if (this.state.error){
             return (
                 <div className="container">
-                    <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappear}/>
+                    <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappearError}/>
                     <Header>
                         <Link to="/" className="btn btn-default">Home</Link>
                         <Link to="/adverts" className="btn btn-default">Advertisments</Link>

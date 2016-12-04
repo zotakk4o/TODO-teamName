@@ -39,4 +39,20 @@ function logoutUser(){
         }
     })
 }
-export{registerUser,loginUser,logoutUser}
+function createAd(title,description){
+    let data = {
+        date:Date.now(),
+        title,
+        description,
+        author:sessionStorage.getItem('username')
+    };
+    return $.ajax({
+        method:"POST",
+        url:baseUrl+'appdata/'+appKey+'/adverts',
+        headers:{
+            Authorization:'Kinvey ' + sessionStorage.getItem('authToken')
+        },
+        data:data
+    })
+}
+export{registerUser,loginUser,logoutUser,createAd}
