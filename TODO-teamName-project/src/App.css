@@ -33,3 +33,9 @@ form {
   text-align: center;
   width: 50%;
 }
+
+.panel {
+  display: inline-block;
+  margin-left: 5%;
+  width: 45%;
+}

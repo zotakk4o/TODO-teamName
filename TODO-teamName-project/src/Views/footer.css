@@ -1,0 +1,9 @@
+footer{
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+.footer p {
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+}

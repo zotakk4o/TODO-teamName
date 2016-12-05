@@ -20,7 +20,7 @@ export default class AdvertsView extends Component {
                     <div className="panel-body">
                         <Link to={'/edit/'+this.props.adId} className="btn btn-default">Edit</Link>
                         <Link to={'/delete/'+this.props.adId} className="btn btn-default">Delete</Link>
-                        <Link to={'/details/'+this.props.adId} className="btn btn-default">Read whole advert</Link>
+                        <Link to={'/details/'+this.props.adId} className="btn btn-default">View</Link>
                     </div>
                 </div>
             );
@@ -35,7 +35,7 @@ export default class AdvertsView extends Component {
                     <div className="panel-body">{this.cutLongText(this.props.description) || "No description."}</div>
                     <div className="panel-heading">Management</div>
                     <div className="panel-body">
-                        <Link to={'/details/'+this.props.adId} className="btn btn-default">Read whole advert</Link>
+                        <Link to={'/details/'+this.props.adId} className="btn btn-default">View</Link>
                     </div>
                 </div>
             );
