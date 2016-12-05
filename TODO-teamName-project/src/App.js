@@ -117,6 +117,7 @@ export default class App extends Component {
         sessionStorage.clear();
         this.checkUserCredentials();
         this.showInfoOrError('info','Successfully logged out.');
+        this.context.router.push('/')
     }
 
   }
