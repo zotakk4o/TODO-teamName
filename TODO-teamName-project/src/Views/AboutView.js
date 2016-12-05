@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AboutView.css';
+// import './AboutView.css';
 
 export default class AboutView extends Component {
     render() {
@@ -11,7 +11,7 @@ export default class AboutView extends Component {
         return (
             <div classID="about-view" style={style}>
 
-                <div className="panel panel-default" >
+                <div className="panel panel-about" >
 
                     <div className="panel-heading"><h1>{this.props.title}</h1></div>
                     <div className="panel-body"><p>{this.props.overview}</p></div>
