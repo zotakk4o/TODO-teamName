@@ -42,11 +42,7 @@ export default class EditAdPage extends Component {
         if(!sessionStorage.getItem('username')){
             this.context.router.push('/adverts');
             Warden.showInfoOrError('error','Login in order to edit an advertisment.')
-        } else if (sessionStorage.getItem('username') !== this.state.author){
-            this.context.router.push('/adverts');
-            Warden.showInfoOrError('error','НЕ МИ СЕ ПРАВИ НА ХАКЕР САМО!!')
         }
-
     }
 
     onChange(event){
