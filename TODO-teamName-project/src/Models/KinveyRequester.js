@@ -82,4 +82,20 @@ function deleteAd(adId){
         },
     })
 }
-export{registerUser,loginUser,logoutUser,createAd,listAds,readAd}
+function updateAd(title,description,adId){
+    let data = {
+        date:Date.now(),
+        title,
+        description,
+        author:sessionStorage.getItem('username')
+    };
+    return $.ajax({
+        method:"PUT",
+        url:baseUrl+'appdata/'+appKey+'/adverts/' + adId,
+        headers:{
+            Authorization:'Kinvey ' + sessionStorage.getItem('authToken')
+        },
+        data:data
+    })
+}
+export{registerUser,loginUser,logoutUser,createAd,listAds,readAd,deleteAd,updateAd}
