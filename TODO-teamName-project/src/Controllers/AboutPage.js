@@ -4,7 +4,10 @@ import AboutView from '../Views/AboutView';
 export default class AboutPage extends Component {
     render() {
         return (
-            <AboutView/>
+            <div classID="about-view">
+                <h1>About</h1>
+                <p>This is a simple advertisement website.</p>
+            </div>
         );
     }
 }

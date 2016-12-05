@@ -49,22 +49,30 @@ export default class App extends Component {
   }
 
   disappearInfo() {
-      let first = setInterval(disapp.bind(this),1500);
-      let second = setInterval(appear.bind(this),1520);
-      function disapp(){
-          this.setState({
-              display:false,
-          });
-      }
-      function appear(){
-          this.setState({
-              display:true,
-              info:false,
-              error:false
-          });
-          clearInterval(first);
-          clearInterval(second);
-      }
+      // let first = setInterval(disapp.bind(this),1500);
+      // let second = setInterval(appear.bind(this),1520);
+      // function disapp(){
+      //     this.setState({
+      //         display:false,
+      //     });
+      // }
+      // function appear(){
+      //     this.setState({
+      //         display:true,
+      //         info:false,
+      //         error:false
+      //     });
+      //     clearInterval(first);
+      //     clearInterval(second);
+      // }
+      this.setState({
+          display:false,
+      });
+      this.setState({
+          display:true,
+          info:false,
+          error:false
+      });
   }
   disappearError(){
       this.setState({
@@ -108,7 +116,6 @@ export default class App extends Component {
     function logoutSuccess(){
         sessionStorage.clear();
         this.checkUserCredentials();
-        this.context.router.push('/');
         this.showInfoOrError('info','Successfully logged out.');
     }
 
@@ -137,6 +144,7 @@ export default class App extends Component {
               <div className="container">
                   <Header>
                       <Link to="/" className="btn btn-default">Home</Link>
+                      <Link to="/adverts" className="btn btn-default">Advertisments</Link>
                       <Link to="/register" className="btn btn-default">Register</Link>
                       <Link to="/login" className="btn btn-default">Login</Link>
                       <Link to="/about" className="btn btn-default">About</Link>
