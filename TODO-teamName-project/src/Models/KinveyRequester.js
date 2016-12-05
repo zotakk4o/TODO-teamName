@@ -73,4 +73,13 @@ function readAd(adId){
         },
     })
 }
+function deleteAd(adId){
+    return $.ajax({
+        method:"DELETE",
+        url:baseUrl+'appdata/'+appKey+'/adverts/'+ adId,
+        headers:{
+            Authorization:'Kinvey ' + sessionStorage.getItem('authToken')
+        },
+    })
+}
 export{registerUser,loginUser,logoutUser,createAd,listAds,readAd}
