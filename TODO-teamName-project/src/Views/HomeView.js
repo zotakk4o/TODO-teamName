@@ -28,7 +28,17 @@ export default class AdvertsPage extends Component {
             <div>
                 <h1>Latest Ads:</h1>
                 {this.state.ad.map((a,i)=>{
-                    return <AdvertsView key={i} author={a.author} title={a.title}  description={a.description} adId={a._id}/>
+                    {/*
+
+
+                    Show Last 4 posts
+
+
+
+                    */}
+                    if (i < 4){
+                        return <AdvertsView key={i} author={a.author} title={a.title}  description={a.description} adId={a._id}/>
+                    }
                 })}
             </div>
         );
