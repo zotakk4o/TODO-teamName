@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AboutView.css';
 
 export default class AboutView extends Component {
     render() {
