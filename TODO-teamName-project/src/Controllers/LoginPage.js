@@ -23,7 +23,7 @@ export default class LoginPage extends Component {
             this.saveInSession(userData);
             Warden.sessionUpdate();
             Warden.showInfoOrError('info','Successfully logged in.');
-            this.context.router.push('/')
+            this.context.router.push('/adverts')
         }
     }
     saveInSession(userData){

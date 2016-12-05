@@ -21,7 +21,7 @@ export default class RegisterPage extends Component {
         });
         function registerSuccess(userData) {
             this.saveInSession(userData);
-            this.context.router.push('/');
+            this.context.router.push('/adverts');
             Warden.sessionUpdate();
             Warden.showInfoOrError('info','Registration was successful.');
         }

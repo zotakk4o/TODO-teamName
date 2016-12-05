@@ -4,7 +4,7 @@ export default class EditAdView extends Component {
     render() {
         return (
             <div>
-                <h1>Create Advert</h1>
+                <h1>Edit Advert</h1>
                 <form onSubmit={this.props.onSubmit}>
                     <div className="form-group">
                         <label>Title </label>

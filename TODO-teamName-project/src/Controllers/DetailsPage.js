@@ -8,11 +8,10 @@ export default class DetailsPage extends Component {
         super(props);
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
         this.state = {
-            ad:[]
+            ad:{}
         }
     }
     componentDidMount(){
-        console.log(this.props.params.adId);
         readAd(this.props.params.adId).then(this.onLoadSuccess);
     }
     onLoadSuccess(response){

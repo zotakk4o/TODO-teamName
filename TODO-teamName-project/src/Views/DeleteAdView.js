@@ -12,8 +12,7 @@ export default class DeleteAdView extends Component {
                                name="title"
                                className="form-control"
                                value={this.props.title}
-                               onChange={this.props.onChange}
-                               required
+                               disabled
                         />
                     </div>
 
@@ -23,8 +22,8 @@ export default class DeleteAdView extends Component {
                             name="description"
                             className="form-control"
                             value={this.props.description}
-                            onChange={this.props.onChange}
                             rows="10"
+                            disabled
                         />
                     </div>
 

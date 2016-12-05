@@ -17,7 +17,7 @@ export default class App extends Component {
           isLoggedIn:false,
           display:true,
           info:false,
-          error:false
+          error:false,
       };
       this.showInfoOrError = this.showInfoOrError.bind(this);
       this.checkUserCredentials = this.checkUserCredentials.bind(this);
@@ -38,7 +38,7 @@ export default class App extends Component {
               info:true,
               error:false,
               message
-          })
+          });
       }else if (type === 'error'){
           this.setState({
               info:false,
@@ -77,6 +77,14 @@ export default class App extends Component {
       });
   }
 
+  check(){
+      if(this.state.info){
+         return <InfoBoxView display={this.state.display} disappear={this.disappearInfo} message={this.state.message}/>
+      }else if (this.state.error){
+          return <ErrorBoxView display={this.state.display} disappear={this.disappearError} message={this.state.message}/>
+      }
+  }
+
   checkUserCredentials(){
     let username = sessionStorage.getItem('username');
     if(username){
@@ -93,7 +101,10 @@ export default class App extends Component {
   }
 
   onLogout(){
-    logoutUser().then(logoutSuccess.bind(this)).catch((error)=>console.log(error));
+    logoutUser().then(logoutSuccess.bind(this)).catch((error)=>{
+        let resp = JSON.parse(error.responseText);
+        Warden.showInfoOrError('error',resp.description)
+    });
     function logoutSuccess(){
         sessionStorage.clear();
         this.checkUserCredentials();
@@ -104,96 +115,39 @@ export default class App extends Component {
   }
 
   render() {
-    if(this.state.isLoggedIn){
-        if(this.state.info){
-            return (
-                <div className="container">
-                    <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappearInfo}/>
-                    <Header>
-                        <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/adverts" className="btn btn-default">Advertisments</Link>
-                        <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
-                        <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
-                        <Link to="/about" className="btn btn-default">About</Link>
-                    </Header>
-                    {this.props.children}
-                    <Footer/>
-                </div>
-            );
-        }else if(this.state.error){
-            return (
-                <div className="container">
-                    <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappearError}/>
-                    <Header>
-                        <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/adverts" className="btn btn-default">Advertisments</Link>
-                        <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
-                        <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
-                        <Link to="/about" className="btn btn-default">About</Link>
-                    </Header>
-                    {this.props.children}
-                    <Footer/>
-                </div>
-            );
-        }else{
-            return (
-                <div className="container">
-                    <Header>
-                        <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/adverts" className="btn btn-default">Advertisments</Link>
-                        <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
-                        <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
-                        <Link to="/about" className="btn btn-default">About</Link>
-                    </Header>
-                    {this.props.children}
-                    <Footer/>
-                </div>
-            );
-        }
-    }else{
-        if(this.state.info){
-            return (
-                <div className="container">
-                    <InfoBoxView message={this.state.message} display={this.state.display} disappear={this.disappearInfo}/>
-                    <Header>
-                        <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/register" className="btn btn-default">Register</Link>
-                        <Link to="/login" className="btn btn-default">Login</Link>
-                        <Link to="/about" className="btn btn-default">About</Link>
-                    </Header>
-                    {this.props.children}
-                    <Footer/>
-                </div>
-            );
-        }else if (this.state.error){
-            return (
-                <div className="container">
-                    <ErrorBoxView message={this.state.message} display={this.state.display} disappear={this.disappearError}/>
-                    <Header>
-                        <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/register" className="btn btn-default">Register</Link>
-                        <Link to="/login" className="btn btn-default">Login</Link>
-                        <Link to="/about" className="btn btn-default">About</Link>
-                    </Header>
-                    {this.props.children}
-                    <Footer/>
-                </div>
-            );
-        }else{
-            return (
-                <div className="container">
-                    <Header>
-                        <Link to="/" className="btn btn-default">Home</Link>
-                        <Link to="/register" className="btn btn-default">Register</Link>
-                        <Link to="/login" className="btn btn-default">Login</Link>
-                        <Link to="/about" className="btn btn-default">About</Link>
-                    </Header>
-                    {this.props.children}
-                    <Footer/>
-                </div>
-            );
-        }
-    }
+      if (this.state.isLoggedIn) {
+          return (
+              <div className="container">
+                  <Header>
+                      <Link to="/" className="btn btn-default">Home</Link>
+                      <Link to="/adverts" className="btn btn-default">Advertisments</Link>
+                      <Link to="/create-advert" className="btn btn-default">Create Advertisment</Link>
+                      <Link className="btn btn-default" onClick={this.onLogout}>Logout</Link>
+                      <Link to="/about" className="btn btn-default">About</Link>
+                  </Header>
+                  {this.check()}
+                  {this.props.children}
+                  <Footer/>
+              </div>
+          );
+      }
+      else {
+
+          return (
+              <div className="container">
+                  <Header>
+                      <Link to="/" className="btn btn-default">Home</Link>
+                      <Link to="/register" className="btn btn-default">Register</Link>
+                      <Link to="/login" className="btn btn-default">Login</Link>
+                      <Link to="/about" className="btn btn-default">About</Link>
+                  </Header>
+                  {this.check()}
+                  {this.props.children}
+                  <Footer/>
+              </div>
+          );
+
+      }
   }
 }
 App.contextTypes = {
