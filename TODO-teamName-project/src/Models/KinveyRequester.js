@@ -60,7 +60,7 @@ function listAds(){
         method:"GET",
         url:baseUrl+'appdata/'+appKey+'/adverts',
         headers:{
-            Authorization:'Kinvey ' + sessionStorage.getItem('authToken')
+            Authorization: 'Basic ' + btoa('funbazov:funbazov')
         },
     })
 }
