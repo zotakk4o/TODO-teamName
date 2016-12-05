@@ -6,10 +6,23 @@ import {updateAd,readAd} from '../Models/KinveyRequester'
 export default class EditAdPage extends Component {
     constructor(props){
         super(props);
+        let href = window.location.href;
+        let id = href.split('/');
+        id = id[id.length -1];
+        //alert(window.location.href);
+        let goofyTitle = '';
+        let goofyDesc = '';
+
+        readAd(id).then(function (content) {
+            goofyTitle = content.title;
+            goofyDesc = content.description;
+        }).catch(function (err) {
+            console.log(err)
+        });
         this.state = {
-            title:'',
-            description:''
-        }
+            title: goofyTitle,
+            description: goofyDesc
+        };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
