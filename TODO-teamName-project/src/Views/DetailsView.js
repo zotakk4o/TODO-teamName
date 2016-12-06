@@ -6,7 +6,7 @@ export default class DetailsView extends Component {
     render() {
         if(sessionStorage.getItem('username') === this.props.author){
             return (
-                <div className="panel panel-default">
+                <div className="panel panel-viewAd">
                     <div className="panel-heading">Author</div>
                     <div className="panel-body">{this.props.author}</div>
                     <div className="panel-heading">Title</div>
@@ -23,14 +23,14 @@ export default class DetailsView extends Component {
             );
         }else{
             return (
-                <div className="panel panel-default">
-                    <div className="panel-heading">Author</div>
-                    <div className="panel-body">{this.props.author}</div>
-                    <div className="panel-heading">Title</div>
-                    <div className="panel-body">{this.props.title}</div>
-                    <div className="panel-heading">Description</div>
-                    <div className="panel-body detailsDivs">{this.props.description || "No description."}</div>
-                    <div className="panel-heading">Management</div>
+                <div className="panel panel-viewAd">
+                    {/*<div className="panel-heading">Author</div>*/}
+                    {/*<div className="panel-body">{this.props.author}</div>*/}
+                    {/*<div className="panel-heading">Title</div>*/}
+                    {/*<div className="panel-body">{this.props.title}</div>*/}
+                    {/*<div className="panel-heading">Description</div>*/}
+                    {/*<div className="panel-body detailsDivs">{this.props.description || "No description."}</div>*/}
+                    {/*<div className="panel-heading">Management</div>*/}
                     <div className="panel-body">
                         <Link to='/adverts' className="btn btn-default">Back to adverts</Link>
                     </div>

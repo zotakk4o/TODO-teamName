@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import DetailsView from '../Views/DetailsView';
 import {readAd} from '../Models/KinveyRequester'
+import Warden from '../Controllers/Warden'
+
 
 
 export default class DetailsPage extends Component {
@@ -12,6 +14,9 @@ export default class DetailsPage extends Component {
         }
     }
     componentDidMount(){
+        if(!sessionStorage.getItem('username')){
+            Warden.showInfoOrError('error','Login in order to see the advertisement.')
+        }
         readAd(this.props.params.adId).then(this.onLoadSuccess);
     }
     onLoadSuccess(response){

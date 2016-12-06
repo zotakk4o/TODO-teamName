@@ -47,5 +47,8 @@ form {
   background-color: #f5f5f5;
   border-color: #ddd;
   text-align: center;
-
+}
+.panel-viewAd{
+  width: 90%;
+  text-align: center;
 }

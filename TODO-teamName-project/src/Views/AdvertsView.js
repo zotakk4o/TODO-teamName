@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 
 export default class AdvertsView extends Component {
-    cutLongText(text,length=60){
+    cutLongText(text,length=55){
         if(text.length > length)return text.substring(0,length)+'...';
         else return text;
     }
