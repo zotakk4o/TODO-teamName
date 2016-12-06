@@ -12,10 +12,10 @@ export default class AdvertsPage extends Component {
         }
     }
     componentWillMount(){
-        if(!sessionStorage.getItem('username')){
-            this.context.router.push('/');
-            Warden.showInfoOrError('error','Login in order to see the advertisments.')
-        }
+        // if(!sessionStorage.getItem('username')){
+        //     this.context.router.push('/');
+        //     Warden.showInfoOrError('error','Login in order to see the advertisments.')
+        // }
         listAds().then(this.onLoadSuccess);
     }
     onLoadSuccess(response){
