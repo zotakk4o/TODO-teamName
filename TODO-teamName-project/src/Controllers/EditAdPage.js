@@ -21,18 +21,28 @@ export default class EditAdPage extends Component {
         });
         this.state = {
             title: goofyTitle,
-            description: goofyDesc
+            description: goofyDesc,
+            inpDisabled:false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(event){
         event.preventDefault();
+        this.setState({
+            inpDisabled:true
+        });
         updateAd(this.state.title,this.state.description,this.props.params.adId).then(updateAdSuccess.bind(this)).catch((error)=>{
             let resp = JSON.parse(error.responseText);
-            Warden.showInfoOrError('error',resp.description)
+            Warden.showInfoOrError('error',resp.description);
+            this.setState({
+                inpDisabled:false
+            });
         });
         function updateAdSuccess(){
+            this.setState({
+                inpDisabled:false
+            });
             this.context.router.push('/adverts');
             Warden.showInfoOrError('info','Advertisment successfully edited.')
         }
@@ -71,6 +81,7 @@ export default class EditAdPage extends Component {
                 description={this.state.description}
                 onSubmit={this.onSubmit}
                 onChange={this.onChange}
+                disabled={this.state.inpDisabled}
             />
         )
     }

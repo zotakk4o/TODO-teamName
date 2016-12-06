@@ -9,17 +9,27 @@ export default class LoginPage extends Component {
         this.state = {
             username:'',
             password:'',
+            inpDisabled:false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(event){
         event.preventDefault();
+        this.setState({
+            inpDisabled:true
+        });
         loginUser(this.state.username,this.state.password).then(loginSuccess.bind(this)).catch((error)=>{
             let resp = JSON.parse(error.responseText);
-            Warden.showInfoOrError('error',resp.description)
+            Warden.showInfoOrError('error',resp.description);
+            this.setState({
+                inpDisabled:false
+            })
         });
         function loginSuccess(userData) {
+            this.setState({
+                inpDisabled:false
+            });
             this.saveInSession(userData);
             Warden.sessionUpdate();
             Warden.showInfoOrError('info','Successfully logged in.');
@@ -44,6 +54,7 @@ export default class LoginPage extends Component {
                 password={this.state.password}
                 onSubmit={this.onSubmit}
                 onChange={this.onChange}
+                disabled={this.state.inpDisabled}
             />
         );
     }

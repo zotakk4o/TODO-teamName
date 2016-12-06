@@ -9,17 +9,27 @@ export default class RegisterPage extends Component {
         this.state = {
             username:'',
             password:'',
+            inpDisabled:false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(event){
         event.preventDefault();
+        this.setState({
+            inpDisabled:true
+        });
         registerUser(this.state.username,this.state.password).then(registerSuccess.bind(this)).catch((error)=>{
             let resp = JSON.parse(error.responseText);
-            Warden.showInfoOrError('error',resp.description)
+            Warden.showInfoOrError('error',resp.description);
+            this.setState({
+                inpDisabled:false
+            });
         });
         function registerSuccess(userData) {
+            this.setState({
+                inpDisabled:false
+            });
             this.saveInSession(userData);
             this.context.router.push('/adverts');
             Warden.sessionUpdate();
@@ -52,6 +62,7 @@ export default class RegisterPage extends Component {
                 password={this.state.password}
                 onSubmit={this.onSubmit}
                 onChange={this.onChange}
+                disabled={this.state.inpDisabled}
             />
         );
     }

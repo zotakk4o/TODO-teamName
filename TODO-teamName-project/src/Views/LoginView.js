@@ -14,6 +14,7 @@ export default class LoginView extends Component {
                                value={this.props.username}
                                onChange={this.props.onChange}
                                required
+                               disabled={this.props.disabled}
                         />
                     </div>
 
@@ -25,6 +26,7 @@ export default class LoginView extends Component {
                                value={this.props.password}
                                onChange={this.props.onChange}
                                required
+                               disabled={this.props.disabled}
                         />
                     </div>
 
@@ -32,6 +34,7 @@ export default class LoginView extends Component {
                         <input type="submit"
                                value='Login'
                                className="btn btn-default"
+                               disabled={this.props.disabled}
                         />
                     </div>
                 </form>

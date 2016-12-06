@@ -14,6 +14,7 @@ export default class CreateAdvertView extends Component {
                                value={this.props.title}
                                onChange={this.props.onChange}
                                required
+                               disabled={this.props.disabled}
                         />
                     </div>
 
@@ -25,6 +26,7 @@ export default class CreateAdvertView extends Component {
                             value={this.props.description}
                             onChange={this.props.onChange}
                             rows="10"
+                            disabled={this.props.disabled}
                         />
                     </div>
 
@@ -32,6 +34,7 @@ export default class CreateAdvertView extends Component {
                         <input type="submit"
                                value='Create Advert'
                                className="btn btn-default"
+                               disabled={this.props.disabled}
                         />
                     </div>
                 </form>

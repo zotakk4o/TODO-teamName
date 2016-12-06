@@ -9,17 +9,27 @@ export default class CreateAdvertPage extends Component {
         this.state = {
             title:'',
             description:'',
+            inpDisabled:false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit(event){
         event.preventDefault();
+        this.setState({
+            inpDisabled:true
+        });
         createAd(this.state.title,this.state.description).then(createAdSuccess.bind(this)).catch((error)=>{
             let resp = JSON.parse(error.responseText);
-            Warden.showInfoOrError('error',resp.description)
+            Warden.showInfoOrError('error',resp.description);
+            this.setState({
+                inpDisabled:false
+            });
         });
         function createAdSuccess(){
+            this.setState({
+                inpDisabled:false
+            });
             this.context.router.push('/adverts');
             Warden.showInfoOrError('info','Advertisment successfully created.')
         }
@@ -46,6 +56,7 @@ export default class CreateAdvertPage extends Component {
                 description={this.state.description}
                 onSubmit={this.onSubmit}
                 onChange={this.onChange}
+                disabled={this.state.inpDisabled}
             />
         )
     }

@@ -19,9 +19,10 @@ export default class AdvertsPage extends Component {
         listAds().then(this.onLoadSuccess);
     }
     onLoadSuccess(response){
-        this.setState({
-            ad:response
-        });
+        let arr = response;
+        arr.sort((a,b)=>a['date'] < b['date']);
+        this.setState({ad:arr});
+
     }
     render(){
         return (

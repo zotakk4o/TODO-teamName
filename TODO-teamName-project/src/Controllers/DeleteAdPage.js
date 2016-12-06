@@ -8,7 +8,7 @@ export default class DeleteAdPage extends Component {
         super(props);
         this.state = {
             title:'',
-            description:''
+            description:'',
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -16,7 +16,7 @@ export default class DeleteAdPage extends Component {
         event.preventDefault();
         deleteAd(this.props.params.adId).then(deleteAdSuccess.bind(this)).catch((error)=>{
             let resp = JSON.parse(error.responseText);
-            Warden.showInfoOrError('error',resp.description)
+            Warden.showInfoOrError('error',resp.description);
         });
         function deleteAdSuccess(){
             this.context.router.push('/adverts');
