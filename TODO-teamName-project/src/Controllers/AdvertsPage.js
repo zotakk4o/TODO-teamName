@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AdvertsView from '../Views/AdvertsView';
 import {listAds} from '../Models/KinveyRequester'
-import Warden from '../Controllers/Warden'
+//import Warden from '../Controllers/Warden'
 
 export default class AdvertsPage extends Component {
     constructor(props){
